@@ -1,0 +1,22 @@
+def get_word():    
+    random_words = ["Abandon", "Above", "Accept", "Accident", "Account", "Accuse", "Achieve", "Acquire", "Across", "Action", "Active",
+                    "Baby", "Back", "Background", "Bad", "Bag", "Balance", "Ball", "Ban", "Band", "Bank", "Bar", "Base", "Basic", "Basis",
+                    "Calculate", "Call", "Camera", "Camp", "Campaign", "Can", "Cancel", "Cancer", "Candidate", "Capable", "Capacity", "Capital", 
+                    "Deny", "Department", "Depend", "Deposit", "Depress", "Depth","Describe", "Design", "Desire", "Desk", "Destroy", "Detail", 
+                    "Empty", "End", "Enemy", "Energy", "Enforce", "Engage", "Engine", "Enhance", "Enjoy", "Enough", "Ensure",
+                    "Faith", "Fall", "False", "Family", "Famous", "Fan", "Fancy", "Fantastic", "Far", "Farm", "Fashion", "Fast", "Fat", "Father",
+                    "gift", "Gain", "Galaxy", "Gallery", "Game", "Garbage", "Garden", "Garlic", "Gas", "Gate", "Gather", "General", "Generate", 
+                    "Happy", "Hard", "Harm", "Hat", "Head", "Health", "Hear", "Heart", "Heat", "Heavy", "Help", "Herself", "Hide",
+                    "Ice", "Idea", "Identify", "Identity", "Ignore", "Image", "Imagine", "Immediate", "Impact", "Implement", "Imply", "Import",
+                    "Jump", "Just", "Keep", "Key", "Kill", "Kind", "King", "Kiss", "Kitchen", "Knife", "Knowledge", "Label", "Labor", "Lack",
+                    "Money", "Month", "Mood", "Moon", "Moral", "More", "Morning", "Most", "Mother", "Motion", "Motivate", "Motor", "Mount", 
+                    "Nap", "Name", "Narrow", "Nation", "Native", "Natural", "Nature", "Near", "Necessary", "Need", "Negative", "Neglect", "Piano", 
+                    "Picture", "Piece", "Pig", "Pile", "Pill", "Pilot", "Pin", "Pipe", "Pitch", "Place", "Plan", "Plane", "Plant", "Quality", 
+                    "Quantity", "Quarter", "Question", "Quick", "Quiet", "Rain", "Raise", "Range", "Rate", "Rather", "Reach", "React", "Read",
+                    "Ready", "Real", "Reality", "Realize", "Reason", "Saint", "Salary", "Sale", "Salt", "Same", "Sample", "Sand", "Save", "Scale",
+                    "Scene", "School", "Science", "Score", "Sea", "Train", "Travel", "Treat", "Tree", "Trial", "Trick", "True", "Trust", "Truth", 
+                    "Try", "Tube", "Turn", "TV", "Twist", "Umbrella", "Unable", "Uncle", "Under", "Understand", "Unit", "United", "University",
+                    "Unless", "Until", "Up", "Upon", "Us", "Violin", "Visit", "Visual", "Voice", "Vote", "Wait", "Wake", "Walk", "Wall", "Want",
+                      "War", "Warm", "Warn", "Wash", "Waste", "X-ray", "Yard", "Year", "Yellow", "Yes", "Yesterday", "Yet", "You", "Young", "Zebra"]
+    return random.choice(random_words)
+
