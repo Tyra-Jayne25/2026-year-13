@@ -144,6 +144,16 @@ def main():
                print("YOU LOSE!")
                is_running = False
           
+#Main loop with play again option
+while True:
+    main()
 
-if __name__ == "__main__":
-     main()
+    while True:
+        play_again = input("\nWould you like to play again? (yes/no): ").lower()
+        if play_again in ["yes", "no"]:
+            break
+        print("Please enter 'yes' or 'no'.")
+
+    if play_again == "no":
+        print("\nThanks for playing! Goodbye!")
+        break
