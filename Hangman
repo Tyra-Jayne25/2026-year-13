@@ -72,7 +72,21 @@ Hangman_art = {
                    "|   - | -  ",
                    "|     |    ",
                    "|    / \\  ",
-                   "|__________")
+                   "|__________"),
+              7:  ("__________ ",
+                   "|     |    ",
+                   "|    ( )   ",
+                   "|   - | -  ",
+                   "|     |    ",
+                   "|   _/ \\  ",
+                   "|__________"),
+              8:  ("__________ ",
+                   "|     |    ",
+                   "|    ( )   ",
+                   "|   - | -  ",
+                   "|     |    ",
+                   "|   _/ \\_ ",
+                   "|__________") # pyright: ignore[reportInvalidTypeForm]
 }
 # displaying the man after every wrong guess the player gives
 def display_man(wrong_guesses):
