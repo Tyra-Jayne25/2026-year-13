@@ -5,3 +5,4 @@ hero_0 = {
 }
 print(hero_0["name"])
 print(hero_0["power"])
+print(hero_0["strength"])
