@@ -4,3 +4,4 @@ hero_0 = {
     "strength": 100
 }
 print(hero_0["name"])
+print(hero_0["power"])
