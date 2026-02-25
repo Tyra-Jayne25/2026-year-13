@@ -1,3 +1,7 @@
+from token import NAME
+from tokenize import Name
+
+
 contact = {"1":
     {"First Name": "John",
     "Last Name": "Smith",
@@ -21,3 +25,26 @@ print(contact["2"]["Last Name"])
 print(contact["2"]["Mobile"])
 print(contact["2"]["Email"])
 
+
+NAME = {}
+
+for i in range (2):
+    ID = input("\n\nPerson ID: ")
+    NAME[ID] = {}
+
+    First = input("\n\nFirst Name: ")
+    NAME[ID]["First Name"] = First
+
+    Last = input("\n\nLast Name: ")
+    NAME[ID]["Last Name"] = Last
+
+    Mobile = input("\n\nMobile: ")
+    NAME[ID]["Mobile"] = Mobile
+
+    Email = input("\n\nEmail: ")
+    NAME[ID]["Email"] = Email
+
+print(NAME)
+
+    
+    
