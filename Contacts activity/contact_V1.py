@@ -1,7 +1,3 @@
-from token import NAME
-from tokenize import Name
-
-
 contact = {"1":
     {"First Name": "John",
     "Last Name": "Smith",
