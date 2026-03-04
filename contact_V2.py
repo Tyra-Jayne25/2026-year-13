@@ -32,7 +32,6 @@ if choice == "a":
     Mobile = input("\n\nMobile: ")
     NAME[ID]["Mobile"] = Mobile
 
-
     Email = input("\n\nEmail: ")
     NAME[ID]["Email"] = Email
 
