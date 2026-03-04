@@ -7,6 +7,7 @@ def add_contact(NAME):
     NAME[ID]["Mobile"] = input("Mobile: ")
     NAME[ID]["Email"] = input("Email: ")
     print("\nContact added!")
+#able to add more than one contact and when printing the dictionary, it shows all the contacts added
 
 def search_contact(NAME):
     search_term = input("First Name or Last Name: ")
