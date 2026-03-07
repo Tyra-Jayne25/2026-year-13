@@ -1,8 +1,7 @@
-#Adding buttons to the program using pygame
-#adding buttons for add, search, edit, delete, print, and quit functions
+from random import choice
+import pygame
+pygame.init()
 
-
-#adding in the functions
 def add_contact(NAME):
     NAME[ID] = {}
 
@@ -76,16 +75,12 @@ for i in range (2):
 
 print(NAME)
 
-#adding the buttons using pygame
-import pygame
-pygame.init()
 
 #colour variables
 light_grey=(200,200,200)
 lightish_grey=(180,180,180)
 dark_grey=(100,100,100)
 darker_grey=(70,70,70)
-blue=(0,0,255)
 black=(0,0,0)
 white=(255,255,255)
 
@@ -96,16 +91,88 @@ pygame.display.set_caption("Contact Manager")
 #font
 font = pygame.font.SysFont(None, 30)
 
-#button
-button_add = pygame.Rect(50, 50, 100, 50)
-button_search = pygame.Rect(200, 50, 100, 50)
-button_edit = pygame.Rect(350, 50, 100, 50)
-button_delete = pygame.Rect(50, 150, 100, 50)
-button_print = pygame.Rect(200, 150, 100, 50)
-button_quit = pygame.Rect(350, 150, 100, 50)
+#button functions
+def make_buttons(x, y, w, h, text):
+    return{"rect": pygame.Rect(x, y, w, h),
+           "colour": light_grey, 
+           "text": text}
 
+def draw_button(button):
+    pygame.draw.rect(screen, button["colour"], button["rect"])
+    text_surf = font.render(button["text"], True, black)
+    label = font.render(button["text"], True, black)
+    screen.blit(label, (button["rect"].x + 10, button["rect"].y + 25))
 
+def hover(button, mouse_pos):
+    if button["rect"].collidepoint(mouse_pos):
+        button["colour"] = light_grey
+    else:
+        button["colour"] = lightish_grey
 
+def is_clicked(button, event):
+    return event.type == pygame.MOUSEBUTTONDOWN and button["rect"].collidepoint(event.pos)
 
+#creating the buttons
+buttons = [
+    make_buttons(50, 150, 100, 50, "Add"),
+    make_buttons(200, 150, 100, 50, "Search"),
+    make_buttons(350, 150, 100, 50, "Edit"),
+    make_buttons(50, 250, 100, 50, "Delete"),
+    make_buttons(200, 250, 100, 50, "Print"),
+    make_buttons(350, 250, 100, 50, "Quit")
+]
 
+running = True
 
+while running:
+    screen.fill(darker_grey)
+    mouse_pos = pygame.mouse.get_pos()
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+        for button in buttons:
+            if is_clicked(button, event):
+                if button["text"] == "Add":
+                    add_contact(NAME)
+                elif button["text"] == "Search":
+                    search_contact(NAME)
+                elif button["text"] == "Edit":
+                    edit_contact(NAME)
+                elif button["text"] == "Delete":
+                    delete_contact(NAME)
+                elif button["text"] == "Print":
+                    print_contacts(NAME)
+                elif button["text"] == "Quit":
+                    print("Goodbye!")
+                    running = False
+
+    for button in buttons:
+        hover(button, pygame.mouse.get_pos())
+        draw_button(button)
+
+    pygame.display.flip()
+pygame.quit()
+exit()
+
+#Menu loop to add, search, edit, delete, print, or quit
+while True:
+    choice = input("Do you want to: (a)dd a contact, (S)earch a contact, (e)dit a contact, (d)elete a contact, (p)rint all contacts, or (q)uit? ")
+
+#Using the functions instead of repeating code
+    if choice == "a":
+        add_contact(NAME)
+    elif choice == "s":
+        search_contact(NAME)
+    elif choice == "e":
+        edit_contact(NAME)
+    elif choice == "d":
+        delete_contact(NAME)
+    elif choice == "p":
+        print_contacts(NAME)
+    elif choice == "q":
+        print("Goodbye!")
+        break
+
+print("==================================")
