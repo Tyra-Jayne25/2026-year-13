@@ -2,6 +2,7 @@ import pygame
 pygame.init()
 
 def add_contact(NAME):
+    ID = input("Person ID: ")
     NAME[ID] = {}
 
     NAME[ID]["First Name"] = input("first Name: ")
@@ -51,6 +52,38 @@ def print_contacts(NAME):
         print("Last Name:", info["Last Name"])
         print("Mobile:", info["Mobile"])
         print("Email:", info["Email"])
+
+def get_text_input(prompt):
+    window = pygame.display.set_mode((500, 200))
+    font = pygame.font.SysFont(None, 60)
+    text = ""
+    input_active = True
+    clock = pygame.time.Clock()
+
+    while input_active:
+        clock.tick(60)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                input_active = False
+                return None
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    input_active = False
+                    return text
+                elif event.key == pygame.K_BACKSPACE:
+                    text =  text[:-1]
+                else:
+                    text += event.unicode
+
+        window.fill((0, 0, 0))
+        prompt_surf = font.render(prompt, True, (255, 255, 255))
+        window.blit(prompt_surf, (20, 20))
+                                  
+        text_surf = font.render(text, True, (255, 0, 0))
+        window.blit(prompt_surf, (20, 20))
+        window.blit(text_surf, (20, 100))
+        
+        pygame.display.flip()
 
 #Main program
 NAME = {}
