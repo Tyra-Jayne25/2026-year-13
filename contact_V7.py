@@ -1,20 +1,21 @@
 import pygame
 pygame.init()
 
+#contact functions
 def add_contact(contacts, next_id):
-    contacts[str(next_id)] = {}
-    contacts[str(next_id)]["First Name"] = input("First Name: ")
-    contacts[str(next_id)]["Last Name"] = input("Last Name: ")
-    contacts[str(next_id)]["Mobile"] = input("Mobile: ")
-    contacts[str(next_id)]["Email"] = input("Email: ")
-    print("\nContact added! ID is", next_id)
+    contact_id = str(next_id)
+    contacts[contact_id] = {}
+    contacts[contact_id]["First Name"] = input("First Name: ")
+    contacts[contact_id]["Last Name"] = input("Last Name: ")
+    contacts[contact_id]["Mobile"] = input("Mobile: ")
+    contacts[contact_id]["Email"] = input("Email: ")
+    print("\nContact added! ID is", contact_id)
     next_id += 1
     return contacts, next_id
 
-
 def search_contact(contacts):
     search_term = input("First Name or Last Name: ")
-    found = False 
+    found = False
     for contact_id, info in contacts.items():
         if search_term in info["First Name"] or search_term in info["Last Name"]:
             print("\nPerson ID:", contact_id)
@@ -34,8 +35,9 @@ def edit_contact(contacts):
         contacts[contact_id]["Mobile"] = input("Mobile: ")
         contacts[contact_id]["Email"] = input("Email: ")
         print("\nContact updated!")
+    return contacts
 
-#Adding a delete function to remove a contact from the dictionary
+
 def delete_contact(contacts):
     contact_id = input("Person ID: ")
     if contact_id in contacts:
@@ -43,11 +45,11 @@ def delete_contact(contacts):
         print("\nContact deleted!")
     return contacts
 
-#Adding a print function to display all contacts
 def print_contacts(contacts):
     if not contacts:
         print("No contacts to display.")
         return
+
     for contact_id, info in contacts.items():
         print("\nPerson ID:", contact_id)
         print("First Name:", info["First Name"])
@@ -55,36 +57,37 @@ def print_contacts(contacts):
         print("Mobile:", info["Mobile"])
         print("Email:", info["Email"])
 
+#text input box function GUI
+
 def get_text_input(prompt):
     window = pygame.display.set_mode((500, 200))
     font = pygame.font.SysFont(None, 60)
     text = ""
-    input_active = True
+    active = True
     clock = pygame.time.Clock()
 
-    while input_active:
+    while active:
         clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                input_active = False
+                active = False
                 return None
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    input_active = False
+                    active = False
                     return text
                 elif event.key == pygame.K_BACKSPACE:
-                    text =  text[:-1]
+                    text = text[:-1]
                 else:
                     text += event.unicode
 
         window.fill((0, 0, 0))
         prompt_surf = font.render(prompt, True, (255, 255, 255))
-        window.blit(prompt_surf, (20, 20))
-                                  
         text_surf = font.render(text, True, (255, 0, 0))
+
         window.blit(prompt_surf, (20, 20))
         window.blit(text_surf, (20, 100))
-        
+
         pygame.display.flip()
 
 #Main program
@@ -113,14 +116,14 @@ while True:
         break
 
 print("==================================")
-
 print(contacts)
 
+#GUI button set up 
 
 #colour 
 light_grey=(200,200,200)
 lightish_grey=(180,180,180)
-darker_grey=(70,70,70)
+dark_grey=(70,70,70)
 black=(0,0,0)
 
 #window
@@ -141,10 +144,9 @@ button_quit = pygame.Rect(350, 250, 100, 50)
 running = True
 
 while running:
-    screen.fill(darker_grey)
+    screen.fill(dark_grey)
     mouse_x, mouse_y = pygame.mouse.get_pos()
 
-    #draw buttons + hover effect
     for rect, label in [
         (button_add, "Add"),
         (button_search, "Search"),
@@ -153,10 +155,11 @@ while running:
         (button_print, "Print"),
         (button_quit, "Quit")
     ]:
+    
         color = lightish_grey if rect.collidepoint(mouse_x, mouse_y) else light_grey
         pygame.draw.rect(screen, color, rect)
         text_surf = font.render(label, True, black)
-        screen.blit(text_surf, (rect.x +10, rect.y +15))    
+        screen.blit(text_surf, (rect.x + 10, rect.y + 15))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -164,15 +167,20 @@ while running:
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if button_add.collidepoint(event.pos):
-                add_contact(contacts)
+                contacts, next_id = add_contact(contacts, next_id)
+
             elif button_search.collidepoint(event.pos):
                 search_contact(contacts)
+
             elif button_edit.collidepoint(event.pos):
-                edit_contact(contacts)
+                contacts = edit_contact(contacts)
+
             elif button_delete.collidepoint(event.pos):
-                delete_contact(contacts)
+                contacts = delete_contact(contacts)
+
             elif button_print.collidepoint(event.pos):
                 print_contacts(contacts)
+
             elif button_quit.collidepoint(event.pos):
                 print("Goodbye!")
                 running = False
