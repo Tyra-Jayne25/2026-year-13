@@ -156,8 +156,8 @@ while running:
             elif button_quit.collidepoint(event.pos):
                 print("Goodbye!")
                 running = False
-
-    pygame.display.update()
+                
+                pygame.display.update()
 
 #Main program
 contacts = {}
