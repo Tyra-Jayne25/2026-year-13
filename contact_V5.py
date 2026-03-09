@@ -1,4 +1,3 @@
-#adding in the functions
 def add_contact(NAME):
     NAME[ID] = {}
 
@@ -7,7 +6,6 @@ def add_contact(NAME):
     NAME[ID]["Mobile"] = input("Mobile: ")
     NAME[ID]["Email"] = input("Email: ")
     print("\nContact added!")
-#able to add more than one contact and when printing the dictionary, it shows all the contacts added
 
 def search_contact(NAME):
     search_term = input("First Name or Last Name: ")
@@ -32,14 +30,12 @@ def edit_contact(NAME):
         NAME[ID]["Email"] = input("Email: ")
         print("\nContact updated!")
 
-#Adding a delete function to remove a contact from the dictionary
 def delete_contact(NAME):
     ID = input("Person ID: ")
     if ID in NAME:
         del NAME[ID]
         print("\nContact deleted!")
 
-#Adding a print function to display all contacts
 def print_contacts(NAME):
     if not NAME:
         print("No contacts to display.")
@@ -76,11 +72,9 @@ print(NAME)
 while True:
     choice = input("Do you want to: (a)dd a contact, (S)earch a contact, (e)dit a contact, (d)elete a contact, (p)rint all contacts, or (q)uit? ")
 
-#Using the functions instead of repeating code
     if choice == "a":
         add_contact(NAME)
 
-#Changing the search function to search by first name or last name instead of ID"
     elif choice == "s":
         search_contact(NAME)
 
@@ -93,7 +87,6 @@ while True:
     elif choice == "p":
         print_contacts(NAME)
 
-#Adding a quit option to exit the program
     elif choice == "q":
         print("Goodbye!")
         break
