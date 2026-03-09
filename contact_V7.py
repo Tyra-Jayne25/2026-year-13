@@ -90,34 +90,6 @@ def get_text_input(prompt):
 
         pygame.display.flip()
 
-#Main program
-contacts = {}
-next_id = 1
-
-while True:
-    choice = input("Do you want to: (a)dd a contact, (S)earch a contact, (e)dit a contact, (d)elete a contact, (p)rint all contacts, or (q)uit? ")
-    if choice == "a":
-        contacts, next_id = add_contact(contacts, next_id)
-
-    elif choice == "s":
-        search_contact(contacts)
-
-    elif choice == "e":
-        edit_contact(contacts)
-
-    elif choice == "d":
-        delete_contact(contacts)
-
-    elif choice == "p":
-        print_contacts(contacts)
-
-    elif choice == "q":
-        print("Goodbye!")
-        break
-
-print("==================================")
-print(contacts)
-
 #GUI button set up 
 
 #colour 
@@ -187,5 +159,32 @@ while running:
 
     pygame.display.update()
 
+#Main program
+contacts = {}
+next_id = 1
+
+while True:
+    choice = input("Do you want to: (a)dd a contact, (S)earch a contact, (e)dit a contact, (d)elete a contact, (p)rint all contacts, or (q)uit? ")
+    if choice == "a":
+        contacts, next_id = add_contact(contacts, next_id)
+
+    elif choice == "s":
+        search_contact(contacts)
+
+    elif choice == "e":
+        edit_contact(contacts)
+
+    elif choice == "d":
+        delete_contact(contacts)
+
+    elif choice == "p":
+        print_contacts(contacts)
+
+    elif choice == "q":
+        print("Goodbye!")
+        break
+
+print("==================================")
+print(contacts)
+
 pygame.quit()
-exit()
