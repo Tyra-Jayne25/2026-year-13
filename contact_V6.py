@@ -11,7 +11,6 @@ def add_contact(contacts, next_id):
     next_id += 1
     return contacts, next_id
 
-
 def search_contact(contacts):
     search_term = input("First Name or Last Name: ")
     found = False 
@@ -35,7 +34,6 @@ def edit_contact(contacts):
         contacts[contact_id]["Email"] = input("Email: ")
         print("\nContact updated!")
 
-#Adding a delete function to remove a contact from the dictionary
 def delete_contact(contacts):
     contact_id = input("Person ID: ")
     if contact_id in contacts:
@@ -43,7 +41,6 @@ def delete_contact(contacts):
         print("\nContact deleted!")
     return contacts
 
-#Adding a print function to display all contacts
 def print_contacts(contacts):
     if not contacts:
         print("No contacts to display.")
@@ -113,9 +110,7 @@ while True:
         break
 
 print("==================================")
-
 print(contacts)
-
 
 #colour 
 light_grey=(200,200,200)
@@ -144,7 +139,6 @@ while running:
     screen.fill(darker_grey)
     mouse_x, mouse_y = pygame.mouse.get_pos()
 
-    #draw buttons + hover effect
     for rect, label in [
         (button_add, "Add"),
         (button_search, "Search"),
