@@ -1,53 +1,55 @@
 import pygame
 pygame.init()
 
-def add_contact(NAME):
-    ID = input("Person ID: ")
-    NAME[ID] = {}
+def add_contact(contacts, next_id):
+    contacts[str(next_id)] = {}
+    contacts[str(next_id)]["First Name"] = input("First Name: ")
+    contacts[str(next_id)]["Last Name"] = input("Last Name: ")
+    contacts[str(next_id)]["Mobile"] = input("Mobile: ")
+    contacts[str(next_id)]["Email"] = input("Email: ")
+    print("\nContact added! ID is", next_id)
+    next_id += 1
+    return contacts, next_id
 
-    NAME[ID]["First Name"] = input("first Name: ")
-    NAME[ID]["Last Name"] = input("Last Name: ")
-    NAME[ID]["Mobile"] = input("Mobile: ")
-    NAME[ID]["Email"] = input("Email: ")
-    print("\nContact added!")
 
-def search_contact(NAME):
+def search_contact(contacts):
     search_term = input("First Name or Last Name: ")
     found = False 
-    for ID in NAME:
-        if search_term in NAME[ID]["First Name"] or search_term in NAME[ID]["Last Name"]:
-            print("\nPerson ID:", ID)
-            print("First Name:", NAME[ID]["First Name"])
-            print("Last Name:", NAME[ID]["Last Name"])
-            print("Mobile:", NAME[ID]["Mobile"])
-            print("Email:", NAME[ID]["Email"])
+    for contact_id, info in contacts.items():
+        if search_term in info["First Name"] or search_term in info["Last Name"]:
+            print("\nPerson ID:", contact_id)
+            print("First Name:", info["First Name"])
+            print("Last Name:", info["Last Name"])
+            print("Mobile:", info["Mobile"])
+            print("Email:", info["Email"])
             found = True
     if not found:
         print("No contacts found.")
 
-def edit_contact(NAME):
-    ID = input("Person ID: ")
-    if ID in NAME:
-        NAME[ID]["First Name"] = input("First Name: ")
-        NAME[ID]["Last Name"] = input("Last Name: ")
-        NAME[ID]["Mobile"] = input("Mobile: ")
-        NAME[ID]["Email"] = input("Email: ")
+def edit_contact(contacts):
+    contact_id = input("Person ID: ")
+    if contact_id in contacts:
+        contacts[contact_id]["First Name"] = input("First Name: ")
+        contacts[contact_id]["Last Name"] = input("Last Name: ")
+        contacts[contact_id]["Mobile"] = input("Mobile: ")
+        contacts[contact_id]["Email"] = input("Email: ")
         print("\nContact updated!")
 
 #Adding a delete function to remove a contact from the dictionary
-def delete_contact(NAME):
-    ID = input("Person ID: ")
-    if ID in NAME:
-        del NAME[ID]
+def delete_contact(contacts):
+    contact_id = input("Person ID: ")
+    if contact_id in contacts:
+        del contacts[contact_id]
         print("\nContact deleted!")
+    return contacts
 
 #Adding a print function to display all contacts
-def print_contacts(NAME):
-    if not NAME:
+def print_contacts(contacts):
+    if not contacts:
         print("No contacts to display.")
         return
-    for ID, info in NAME.items():
-        print("\nPerson ID:", ID)
+    for contact_id, info in contacts.items():
+        print("\nPerson ID:", contact_id)
         print("First Name:", info["First Name"])
         print("Last Name:", info["Last Name"])
         print("Mobile:", info["Mobile"])
@@ -86,25 +88,33 @@ def get_text_input(prompt):
         pygame.display.flip()
 
 #Main program
-NAME = {}
+contacts = {}
+next_id = 1
 
-for i in range (2):
-    ID = input("\n\nPerson ID: ")
-    NAME[ID] = {}
+while True:
+    choice = input("Do you want to: (a)dd a contact, (S)earch a contact, (e)dit a contact, (d)elete a contact, (p)rint all contacts, or (q)uit? ")
+    if choice == "a":
+        contacts, next_id = add_contact(contacts, next_id)
 
-    First = input("\n\nFirst Name: ")
-    NAME[ID]["First Name"] = First
+    elif choice == "s":
+        search_contact(contacts)
 
-    Last = input("\n\nLast Name: ")
-    NAME[ID]["Last Name"] = Last
+    elif choice == "e":
+        edit_contact(contacts)
 
-    Mobile = input("\n\nMobile: ")
-    NAME[ID]["Mobile"] = Mobile
+    elif choice == "d":
+        delete_contact(contacts)
 
-    Email = input("\n\nEmail: ")
-    NAME[ID]["Email"] = Email
+    elif choice == "p":
+        print_contacts(contacts)
 
-print(NAME)
+    elif choice == "q":
+        print("Goodbye!")
+        break
+
+print("==================================")
+
+print(contacts)
 
 
 #colour 
@@ -154,15 +164,15 @@ while running:
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if button_add.collidepoint(event.pos):
-                add_contact(NAME)
+                add_contact(contacts)
             elif button_search.collidepoint(event.pos):
-                search_contact(NAME)
+                search_contact(contacts)
             elif button_edit.collidepoint(event.pos):
-                edit_contact(NAME)
+                edit_contact(contacts)
             elif button_delete.collidepoint(event.pos):
-                delete_contact(NAME)
+                delete_contact(contacts)
             elif button_print.collidepoint(event.pos):
-                print_contacts(NAME)
+                print_contacts(contacts)
             elif button_quit.collidepoint(event.pos):
                 print("Goodbye!")
                 running = False
