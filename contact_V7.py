@@ -58,7 +58,6 @@ def print_contacts(contacts):
         print("Email:", info["Email"])
 
 #text input box function GUI
-
 def get_text_input(prompt):
     window = pygame.display.set_mode((500, 200))
     font = pygame.font.SysFont(None, 60)
@@ -91,6 +90,8 @@ def get_text_input(prompt):
         pygame.display.flip()
 
 #GUI button set up 
+contacts = {}
+next_id = 1
 
 #colour 
 light_grey=(200,200,200)
@@ -167,6 +168,8 @@ while True:
     choice = input("Do you want to: (a)dd a contact, (S)earch a contact, (e)dit a contact, (d)elete a contact, (p)rint all contacts, or (q)uit? ")
     if choice == "a":
         contacts, next_id = add_contact(contacts, next_id)
+        contacts = {}
+        next_id = 1
 
     elif choice == "s":
         search_contact(contacts)
