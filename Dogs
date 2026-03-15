@@ -1,0 +1,20 @@
+#By convention, a class name begins with a capital letter
+class Dog:
+    def __init__(self, name, breed, colour, age):
+        self.name = name
+        self.breed = breed
+        self.colour = colour
+        self.age = age
+        self.alive = True
+        self.notes = []
+dog1 = Dog("Max", "Golden Retriever", "Gold", 4)
+
+dog1.name = input("Enter you Dogs name: ")
+dog1.breed = input("Enter you Dogs breed: ")
+dog1.colour = input("Enter you Dogs colour: ")
+dog1.age = input("Enter you Dogs age: ")
+
+
+
+
+
