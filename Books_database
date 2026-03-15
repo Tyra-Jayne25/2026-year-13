@@ -1,0 +1,18 @@
+class Books:
+    def __init__ (self, title, author, genre, IBSN number):
+        self.title = title
+        self.author = author
+        self.genre = genre
+        self.IBSN_number = self.IBSN_number
+        self.alive = True
+        self.notes = []
+book1 = Book =("geronimo stilton", "geromino stilton", "max", "123456")
+
+book1.title = input("Enter the books title: ")
+book1.author = input("Enter the books author: ")
+book1.genre = input("Enter the books genre: ")
+book1.IBSN_number = input("Enter the books IBSN number: ")
+
+
+
+
