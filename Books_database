@@ -1,18 +1,32 @@
 class Books:
-    def __init__(self, title, author, genre, IBSN number):
+    def __init__(self, title, author, genre, isbn_number):
         self.title = title
         self.author = author
         self.genre = genre
-        self.IBSN_number = self.IBSN_number
-        self.alive = True
-        self.notes = []
-book1 = Book =("geronimo stilton", "geromino stilton", "max", "123456")
+        self.isbn_number = isbn_number
 
-book1.title = input("Enter the books title: ")
-book1.author = input("Enter the books author: ")
-book1.genre = input("Enter the books genre: ")
-book1.IBSN_number = input("Enter the books IBSN number: ")
+# list to store the 5 books
+books_list = []
 
+print("Enter information for books: ")
 
+for i in range(5):
+    print("---Book---",  {i+1})
+    title = input("Enter the book's title: ")
+    author = input("Enter the book's author: ")
+    genre = input("Enter the book's genre: ")
+    isbn_number = input("Enter the book's isbn_number: ")
 
+    new_book = Books(title, author, genre, isbn_number)
+    books_list.append(new_book)
+    print() # blank line for spacing
 
+print("====== BOOK COLLECTION ======")
+
+for i in range(len(Books)):
+    print("Book", i + 1)
+    print(" Title :", Books[i].title)
+    print(" Author :", Books[i].author)
+    print(" Genre :", Books[i].genre)
+    print(" ISBN No. :", Books[i].isbn_number)
+    print("==============================")
