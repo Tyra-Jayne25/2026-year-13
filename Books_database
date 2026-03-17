@@ -23,10 +23,10 @@ for i in range(5):
 
 print("====== BOOK COLLECTION ======")
 
-for i in range(len(Books)):
+for i in range(len(books_list)):
     print("Book", i + 1)
-    print(" Title :", Books[i].title)
-    print(" Author :", Books[i].author)
-    print(" Genre :", Books[i].genre)
-    print(" ISBN No. :", Books[i].isbn_number)
+    print(f" Title : {book.title}")
+    print(f"  Author: {book.author}")
+    print(f"  Genre : {book.genre}")
+    print(f"  ISBN  : {book.isbn_number}")
     print("==============================")
