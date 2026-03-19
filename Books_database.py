@@ -4,6 +4,8 @@ class Books:
         self.author = author
         self.genre = genre
         self.isbn_number = isbn_number
+        self.review = review
+        self.rating = rating
 
 # list to store unlimited books
 books_list = []
@@ -15,8 +17,19 @@ while True:
     author = input("Enter the book's author: ")
     genre = input("Enter the book's genre: ")
     isbn_number = input("Enter the book's ISBN number: ")
+
+    review = input("Enter your review of the book: ")
+    if review == "":
+        review = "No review"
+
+    rating = input("Enter your rating for the book (1-5): ")
+    if rating == "":
+        rating = 0
+    else: 
+        rating = int(rating)
+
                    
-    new_book = Books(title, author, genre, isbn_number)
+    new_book = Books(title, author, genre, isbn_number, review, rating)
     books_list.append(new_book)
 
     more = input("Do you have more books to enter? (yes/no): ").lower()
@@ -33,5 +46,7 @@ for i in range(len(books_list)):
     print(f" Author: {book.author}")
     print(f" Genre : {book.genre}")
     print(f" ISBN  : {book.isbn_number}")
+    print(f" Review: {book.review}")
+    print(f" Rating: {book.rating}/5")
     print("==============================")
 
