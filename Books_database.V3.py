@@ -68,3 +68,34 @@ for i, book in enumerate(books_list, start=1):
     print(" Review:", book.review)
     print(" Rating:", book.rating)
     print("==============================")
+
+while True:
+    choice = input("Which book would you like to review? Enter number or 'done': ").lower()
+
+    if choice == "done":
+        break
+
+    if not choice.isdigit():
+        print("Please enter a number.")
+        continue
+
+    choice = int(choice)
+
+    if choice < 1 or choice > len(books_list):
+        print("Invalid book number.")
+        continue
+
+    book = books_list[choice - 1]
+
+    new_review = input("Enter your review: ").strip()
+    while new_review == "":
+        print("Review cannot be empty.")
+        new_review = input("Enter your review: ").strip()
+
+    new_rating = input("Enter a rating out of 5: ")
+    while not new_rating.isdigit() or int(new_rating) < 1 or int(new_rating) > 5:
+        print("Rating must be between 1 and 5.")
+        new_rating = input("Enter a rating out of 5: ")
+
+    book.add_review(new_review, int(new_rating))
+    print("Review added!\n")
