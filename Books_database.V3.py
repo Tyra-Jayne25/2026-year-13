@@ -99,3 +99,8 @@ while True:
 
     book.add_review(new_review, int(new_rating))
     print("Review added!\n")
+
+# fixing capitilisation and formatting ISBN for all books
+for book in books_list:
+    book.fix_caps()
+    book.format_isbn()
