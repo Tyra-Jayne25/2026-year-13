@@ -28,29 +28,34 @@ books_list = []
 print("Enter your book collection information:")
 
 while True:
-    title = input("Enter the book's title: ")
-    author = input("Enter the book's author: ")
+    # Title
+    title = input("Enter the book's title: ").strip()
+    while title == "":
+        print("Title cannot be empty.")
+        title = input("Enter the book's title: ").strip()
+
+    # Author
+    author = input("Enter the book's author: ").strip()
+    while author == "":
+        print("Author cannot be empty.")
+        author = input("Enter the book's author: ").strip()
+
     genre = input("Enter the book's genre: ")
-    isbn_number = input("Enter the book's ISBN number: ")
 
-    review = input("Enter your review of the book: ")
-    if review == "":
-        review = "No review"
+    # ISBN must be numbers
+    isbn_number = input("Enter the book's ISBN number (digits only): ")
+    while not isbn_number.isdigit():
+        print("ISBN must be numbers only.")
+        isbn_number = input("Enter the book's ISBN number: ")
 
-    rating = input("Enter your rating for the book (1-5): ")
-    if rating == "":
-        rating = 0
-    else: 
-        rating = int(rating)
-
-                   
-    new_book = Books(title, author, genre, isbn_number, review, rating)
+    # Create book object
+    new_book = Books(title, author, genre, isbn_number)
     books_list.append(new_book)
 
     more = input("Do you have more books to enter? (yes/no): ").lower()
     if more != "yes":
         break
-    print()  # spacing
+    print()
 
 print("\n====== BOOK COLLECTION ======\n")
 
