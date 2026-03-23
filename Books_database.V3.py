@@ -7,21 +7,25 @@ class Books:
         self.review = review
         self.rating = rating
 
-    # Method to update review + rating
     def add_review(self, new_review, new_rating):
         self.review = new_review
         self.rating = new_rating
 
-    # Method to capitalise title + author
     def fix_caps(self):
         self.title = self.title.title()
         self.author = self.author.title()
 
-    # Method to format ISBN
     def format_isbn(self):
         isbn = str(self.isbn_number).replace("-", "")
         if len(isbn) == 13:
-            self.isbn_number = isbn[0:3] + "-" + isbn[3:5] + "-" + isbn[5:10] + "-" + isbn[10:12] + "-" + isbn[12]
+            self.isbn_number = (
+                isbn[0:3] + "-" +
+                isbn[3:5] + "-" +
+                isbn[5:10] + "-" +
+                isbn[10:12] + "-" +
+                isbn[12]
+            )
+
 # list to store unlimited books
 books_list = []
 
@@ -58,7 +62,7 @@ while True:
     print()
 
 # Displaying all books with reviews and ratings
-print("\n====== UPDATED BOOK COLLECTION ======\n")
+print("====== BOOK COLLECTION ======")
 
 for i, book in enumerate(books_list, start=1):
     print("Book", i)
@@ -96,10 +100,10 @@ while True:
         print("Review cannot be empty.")
         new_review = input("Enter your review: ").strip()
 
-    new_rating = input("Enter a rating out of 5: ")
-    while not new_rating.isdigit() or int(new_rating) < 1 or int(new_rating) > 5:
-        print("Rating must be between 1 and 5.")
-        new_rating = input("Enter a rating out of 5: ")
+    new_rating = input("Enter a rating out of 10: ")
+    while not new_rating.isdigit() or int(new_rating) < 1 or int(new_rating) > 10:
+        print("Rating must be between 1 and 10.")
+        new_rating = input("Enter a rating out of 10: ")
 
     book.add_review(new_review, int(new_rating))
     print("Review added!\n")
