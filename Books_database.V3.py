@@ -57,15 +57,14 @@ while True:
         break
     print()
 
-print("\n====== BOOK COLLECTION ======\n")
+print("====== BOOK COLLECTION ======")
 
-for i in range(len(books_list)):
-    book = books_list[i]
-    print("Book", i + 1)
-    print(f" Title : {book.title}")
-    print(f" Author: {book.author}")
-    print(f" Genre : {book.genre}")
-    print(f" ISBN  : {book.isbn_number}")
-    print(f" Review: {book.review}")
-    print(f" Rating: {book.rating}/5")
+for i, book in enumerate(books_list, start=1):
+    print("Book", i)
+    print(" Title :", book.title)
+    print(" Author:", book.author)
+    print(" Genre :", book.genre)
+    print(" ISBN  :", book.isbn_number)
+    print(" Review:", book.review)
+    print(" Rating:", book.rating)
     print("==============================")
