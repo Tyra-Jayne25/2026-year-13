@@ -52,13 +52,35 @@ while True:
         print("ISBN must be numbers only.")
         isbn_number = input("Enter the book's ISBN number: ")
 
+    # Default review + rating
+    review = "No review"
+    rating = 0
+
+    # Ask if user wants to add a review NOW
+    add_rev = input("Do you want to add a review for this book? (yes/no): ").lower()
+
+    if add_rev == "yes":
+        review = input("Enter your review: ").strip()
+        while review == "":
+            print("Review cannot be empty.")
+            review = input("Enter your review: ").strip()
+
+        rating = input("Enter a rating out of 10: ")
+        while not rating.isdigit() or int(rating) < 1 or int(rating) > 10:
+            print("Rating must be between 1 and 10.")
+            rating = input("Enter a rating out of 10: ")
+
+        rating = int(rating)
+
     # Create book object
-    new_book = Books(title, author, genre, isbn_number)
+    new_book = Books(title, author, genre, isbn_number, review, rating)
     books_list.append(new_book)
 
-    more = input("Do you have more books to enter? (yes/no): ").lower()
+    # Ask if user wants to add another book
+    more = input("Do you want to add another book? (yes/no): ").lower()
     if more != "yes":
         break
+
     print()
 
 # Displaying all books with reviews and ratings
