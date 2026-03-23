@@ -57,7 +57,8 @@ while True:
         break
     print()
 
-print("====== BOOK COLLECTION ======")
+# Displaying all books with reviews and ratings
+print("\n====== UPDATED BOOK COLLECTION ======\n")
 
 for i, book in enumerate(books_list, start=1):
     print("Book", i)
@@ -65,8 +66,11 @@ for i, book in enumerate(books_list, start=1):
     print(" Author:", book.author)
     print(" Genre :", book.genre)
     print(" ISBN  :", book.isbn_number)
-    print(" Review:", book.review)
-    print(" Rating:", book.rating)
+
+    if book.review != "No review":
+        print(" Review:", book.review)
+        print(" Rating:", book.rating)
+
     print("==============================")
 
 while True:
