@@ -1,5 +1,5 @@
 class Books:
-    def __init__(self, title, author, genre, isbn_number):
+    def __init__(self, title, author, genre, isbn_number, review="No review", rating=0):
         self.title = title
         self.author = author
         self.genre = genre
@@ -7,6 +7,21 @@ class Books:
         self.review = review
         self.rating = rating
 
+    # Method to update review + rating
+    def add_review(self, new_review, new_rating):
+        self.review = new_review
+        self.rating = new_rating
+
+    # Method to capitalise title + author
+    def fix_caps(self):
+        self.title = self.title.title()
+        self.author = self.author.title()
+
+    # Method to format ISBN
+    def format_isbn(self):
+        isbn = str(self.isbn_number).replace("-", "")
+        if len(isbn) == 13:
+            self.isbn_number = isbn[0:3] + "-" + isbn[3:5] + "-" + isbn[5:10] + "-" + isbn[10:12] + "-" + isbn[12]
 # list to store unlimited books
 books_list = []
 
@@ -49,4 +64,3 @@ for i in range(len(books_list)):
     print(f" Review: {book.review}")
     print(f" Rating: {book.rating}/5")
     print("==============================")
-
